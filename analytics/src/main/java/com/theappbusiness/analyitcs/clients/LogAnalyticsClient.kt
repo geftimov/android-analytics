@@ -2,7 +2,7 @@ package com.theappbusiness.analyitcs.clients
 
 import android.util.Log
 
-class PrintAnalyticsClient(
+class LogAnalyticsClient(
     private val tag: String? = "Analytics"
 ) : AnalyticsClient {
 
