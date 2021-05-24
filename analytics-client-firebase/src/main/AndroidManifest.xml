@@ -1,4 +1,4 @@
-<manifest package="com.theappbusiness.analytics.client.firebase"
+<manifest package="app.explorior.analytics.client.firebase"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
