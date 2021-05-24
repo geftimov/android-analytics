@@ -1,2 +1,0 @@
-com/theappbusiness/analytics/client/adobe/BuildConfig.java
- com.theappbusiness.analytics.client.adobe.BuildConfig

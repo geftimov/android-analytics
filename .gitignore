@@ -7,3 +7,6 @@
 /captures
 .externalNativeBuild
 .cxx
+/analytics/build
+/analytics-client-adobe/build
+/analytics-client-firebase/build
