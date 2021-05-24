@@ -1,0 +1,2 @@
+include ':sample', ':analytics', ':analytics-client-firebase', ':analytics-client-adobe'
+rootProject.name='Analytics'

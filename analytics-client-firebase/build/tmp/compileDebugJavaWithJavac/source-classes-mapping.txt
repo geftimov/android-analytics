@@ -1,0 +1,2 @@
+com/theappbusiness/analytics/client/firebase/BuildConfig.java
+ com.theappbusiness.analytics.client.firebase.BuildConfig

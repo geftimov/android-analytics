@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation project(':analytics')
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.31'
+    implementation 'com.adobe.mobile:adobeMobileLibrary:4.17.9'
+    testImplementation 'junit:junit:4.12'
+}
