@@ -10,6 +10,9 @@ class MainViewModel constructor(
 ) : ViewModel() {
 
     init {
+        analytics.collect {
+            "shhhhh" to false
+        }
         analytics.send(Event.MAIN_SCREEN)
     }
 

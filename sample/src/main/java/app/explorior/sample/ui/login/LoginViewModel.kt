@@ -33,8 +33,7 @@ class LoginViewModel(
         if (result is Result.Success) {
 
             analytics.collect {
-                "screen_width" to 1500
-                "android_version" to "Android 10"
+                "shhhhh" to true
             }
 
             analytics.send(Event.LOGIN_SUCCESS) {
