@@ -39,6 +39,7 @@ class LoginViewModel(
             analytics.send(Event.LOGIN_SUCCESS) {
                 "screen_width" to 1600
                 "test" to true
+                "test_string" to ""
             }
             _loginResult.value =
                 LoginResult(success = LoggedInUserView(displayName = result.data.displayName))

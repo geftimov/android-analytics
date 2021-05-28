@@ -8,10 +8,12 @@ class MemoryAnalyticsCollector : AnalyticsCollector {
     private val eventMap = hashMapOf<String, MutableMap<String, Any>>()
 
     override fun collect(key: String, value: Any) {
+        if (checkValue(value)) return
         allEventsMap[key] = value
     }
 
     override fun collect(event: String, key: String, value: Any) {
+        if (checkValue(value)) return
         val map = getMap(event)
         map[key] = value
         eventMap[event] = map
@@ -23,5 +25,7 @@ class MemoryAnalyticsCollector : AnalyticsCollector {
             putAll(allEventsMap)
         }
     }
+
+    private fun checkValue(value: Any) = value is String && value.isBlank()
 
 }
