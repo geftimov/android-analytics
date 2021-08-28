@@ -6,6 +6,12 @@ class LogAnalyticsClient(
     private val tag: String? = "Analytics"
 ) : AnalyticsClient {
 
+    override fun userProperty(property: String, data: Any) {
+        log("------------------------------------------------------------")
+        log("|  User Property : $property = $data")
+        log("------------------------------------------------------------")
+    }
+
     override fun send(event: String, eventMap: Map<String, Any>) {
         log("------------------------------------------------------------")
         log("|  Event : $event")

@@ -8,9 +8,13 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import app.explorior.analyitcs.clients.AnalyticsClient
 import java.io.Serializable
 
-class FirebaseAnalyticsClient(context: Context) : AnalyticsClient {
+open class FirebaseAnalyticsClient(context: Context) : AnalyticsClient {
 
     private val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
+
+    override fun userProperty(property: String, data: Any) {
+        firebaseAnalytics.setUserProperty(property, data.toString())
+    }
 
     override fun send(event: String, eventMap: Map<String, Any>) {
         firebaseAnalytics.logEvent(event, eventMap.toBundle())

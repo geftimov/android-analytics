@@ -11,6 +11,10 @@ class AdobeAnalyticsClient(context: Context) : AnalyticsClient {
         Config.setContext(context)
     }
 
+    override fun userProperty(property: String, data: Any) {
+        TODO("Not yet implemented")
+    }
+
     override fun send(event: String, eventMap: Map<String, Any>) {
         Analytics.trackAction(event, eventMap)
     }

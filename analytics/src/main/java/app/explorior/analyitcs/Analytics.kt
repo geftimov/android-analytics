@@ -1,16 +1,18 @@
 package app.explorior.analyitcs
 
-import app.explorior.analyitcs.adapters.AnalyticsAdapter
 import app.explorior.analyitcs.clients.AnalyticsClient
 import app.explorior.analyitcs.collector.AnalyticsCollector
 
 class Analytics(
     private val clients: List<AnalyticsClient>,
-    private val collector: AnalyticsCollector,
-    private val adapters: List<AnalyticsAdapter<*>>
+    private val collector: AnalyticsCollector
 ) {
 
-    fun collect(name: String? = null, builder: EventBuilder.() -> Unit = {}) {
+    fun userProperty(property: String, data: Any) {
+        clients.forEach { it.userProperty(property, data) }
+    }
+
+    fun collect(name: String, builder: EventBuilder.() -> Unit = {}) {
         builder(EventBuilder(name, collector))
     }
 
@@ -33,32 +35,5 @@ class Analytics(
         }
 
     }
-
-//    fun <T : Any> collectData(data: T) {
-//        val adapter = getAdapter(data)
-//        val map = adapter.map(data = data)
-//        collect(map)
-//    }
-
-//    fun <T : Any> collectData(event: String, data: T) {
-//        val adapter = getAdapter(data)
-//        val map = adapter.map(data = data)
-//        collect(event, map)
-//    }
-
-//    fun setUserProperty(property: String, data: String) {
-//        clients.forEach { it.setUserProperty(property, data) }
-//    }
-
-//    private fun <T : Any> getAdapter(data: T): AnalyticsAdapter<T> {
-//        return adapters.filter {
-//            val clazz = (it.javaClass.genericInterfaces.first() as ParameterizedType)
-//                .actualTypeArguments
-//                .first()
-//            return@filter data.javaClass == clazz
-//        }.map { it as AnalyticsAdapter<T> }
-//            .firstOrNull()
-//            ?: throw IllegalArgumentException("AnalyticsAdapter for ${data.javaClass} is missing.")
-//    }
 
 }
