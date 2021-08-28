@@ -11,7 +11,7 @@ class AdobeAnalyticsClient(context: Context) : AnalyticsClient {
         Config.setContext(context)
     }
 
-    override fun userProperty(property: String, data: Any) {
+    override fun userProperty(map: Map<String, Any>) {
         TODO("Not yet implemented")
     }
 

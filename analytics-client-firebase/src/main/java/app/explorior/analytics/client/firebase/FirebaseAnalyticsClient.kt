@@ -4,16 +4,18 @@ import android.content.Context
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Parcelable
-import com.google.firebase.analytics.FirebaseAnalytics
 import app.explorior.analyitcs.clients.AnalyticsClient
+import com.google.firebase.analytics.FirebaseAnalytics
 import java.io.Serializable
 
 open class FirebaseAnalyticsClient(context: Context) : AnalyticsClient {
 
-    private val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
 
-    override fun userProperty(property: String, data: Any) {
-        firebaseAnalytics.setUserProperty(property, data.toString())
+    override fun userProperty(map: Map<String, Any>) {
+        map.forEach { entry ->
+            firebaseAnalytics.setUserProperty(entry.key, entry.value.toString())
+        }
     }
 
     override fun send(event: String, eventMap: Map<String, Any>) {

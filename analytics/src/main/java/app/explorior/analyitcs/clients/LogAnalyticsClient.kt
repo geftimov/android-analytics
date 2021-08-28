@@ -6,9 +6,12 @@ class LogAnalyticsClient(
     private val tag: String? = "Analytics"
 ) : AnalyticsClient {
 
-    override fun userProperty(property: String, data: Any) {
+    override fun userProperty(map: Map<String, Any>) {
         log("------------------------------------------------------------")
-        log("|  User Property : $property = $data")
+        log("|  User Property")
+        log("------------------------------------------------------------")
+        if (map.isEmpty()) return
+        map.entries.forEach { log("|  ${it.key} : ${it.value}") }
         log("------------------------------------------------------------")
     }
 

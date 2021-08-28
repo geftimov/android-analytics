@@ -8,8 +8,10 @@ class Analytics(
     private val collector: AnalyticsCollector
 ) {
 
-    fun userProperty(property: String, data: Any) {
-        clients.forEach { it.userProperty(property, data) }
+    fun userProperty(init: UserPropertyBuilder.() -> Unit = {}) {
+        val builder = UserPropertyBuilder()
+        init(builder)
+        clients.forEach { it.userProperty(builder.map) }
     }
 
     fun collect(name: String, builder: EventBuilder.() -> Unit = {}) {
@@ -19,6 +21,16 @@ class Analytics(
     fun send(name: String, builder: EventBuilder.() -> Unit = {}) {
         builder(EventBuilder(name, collector))
         clients.forEach { it.send(name, collector.getMap(name)) }
+    }
+
+    class UserPropertyBuilder {
+
+        val map = hashMapOf<String, Any>()
+
+        infix fun String.to(value: Any) {
+            map[this] = value
+        }
+
     }
 
     class EventBuilder(

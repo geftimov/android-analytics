@@ -2,7 +2,7 @@ package app.explorior.analyitcs.clients
 
 interface AnalyticsClient {
 
-    fun userProperty(property: String, data: Any)
+    fun userProperty(map: Map<String, Any>)
 
     fun send(event: String, eventMap: Map<String, Any>)
 
